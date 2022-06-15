@@ -26,7 +26,7 @@ app.get('/api/v1/:dayOfWeek', (req, res) => {
   const dayOfWeek = req.params.dayOfWeek
   CalendarModel.find({
     dayOfWeek: dayOfWeek
-  })
+  }).sort({time: 1})
   .then(data => {
     res.status(200).json(data)
   })
