@@ -16,6 +16,7 @@ app.get('/api/v1', (req, res) => {
   CalendarModel.find({})
   .then(data => {
     res.status(200).json(data)
+    console.log(data);
   })
   .catch(err => res.status(500).json(err));
 })
