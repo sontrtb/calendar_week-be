@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // get all data
-app.get('/api/v1', (req, res) => {
+app.get('/', (req, res) => {
   CalendarModel.find({})
   .then(data => {
     res.status(200).json(data)
@@ -21,7 +21,7 @@ app.get('/api/v1', (req, res) => {
 })
 
 // get data day of week
-app.get('/api/v1/:dayOfWeek', (req, res) => {
+app.get('/:dayOfWeek', (req, res) => {
   const dayOfWeek = req.params.dayOfWeek
   CalendarModel.find({
     dayOfWeek: dayOfWeek
@@ -33,7 +33,7 @@ app.get('/api/v1/:dayOfWeek', (req, res) => {
 })
 
 // post
-app.post('/api/v1', (req, res) => {
+app.post('/', (req, res) => {
   CalendarModel.create({
     title: req.body.title,
     listNote: req.body.listNote,
@@ -48,7 +48,7 @@ app.post('/api/v1', (req, res) => {
 })
 
 // delete
-app.delete('/api/v1/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
   const id = req.params.id
   CalendarModel.deleteOne({
     _id: id
